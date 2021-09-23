@@ -10,8 +10,14 @@
 </template>
 
 <script>
+import { onMounted } from '@vue/runtime-core'
+import { blogService } from '../services/BlogService'
 export default {
-  name: 'Home'
+  setup() {
+    onMounted(() => {
+      blogService.getPosts()
+    })
+  }
 }
 </script>
 

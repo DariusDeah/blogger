@@ -1,17 +1,23 @@
 <template>
-  <div class="row">
-    <Blog />
+  <div class="container">
+    <div class="row m-1 p-1">
+      <Blogs v-for="b in blogs " :key="b.id" :blog="b" />
+    </div>
   </div>
 </template>
 
 <script>
-import { onMounted } from '@vue/runtime-core'
+import { computed, onMounted } from '@vue/runtime-core'
 import { blogService } from '../services/BlogService'
+import { AppState } from '../AppState'
 export default {
   setup() {
     onMounted(() => {
       blogService.getPosts()
     })
+    return {
+      blogs: computed(() => AppState.blogs)
+    }
   }
 }
 </script>

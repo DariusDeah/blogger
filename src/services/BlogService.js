@@ -3,7 +3,7 @@ import { api } from './AxiosService'
 
 class BlogService {
   async getPosts() {
-    const res = await api.get()
+    const res = await api.get('api/blogs')
     logger.log(res.data)
   }
 }
